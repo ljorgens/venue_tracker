@@ -1,0 +1,15 @@
+<h1>Bands!</h1>
+
+<form action="/groups" method="post">
+	<input type="text" name="group" placeholder="Enter a band name!">
+	<button type="submit">Add A Band!</button>
+</form>
+<ul>
+<% if @groups.any?() %>
+	<% @groups.each() do |band| %>
+		<li><a href="/venues/<%= band.id %>"><%= band.name() %></a></li>
+		<% end %>
+	<% else %>
+	There are no bands!
+<% end %>
+</ul>
