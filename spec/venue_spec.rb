@@ -9,4 +9,5 @@ describe(Venue) do
     venue = Venue.create({:name => "TODAY"})
     expect(venue.name()).to(eq("Today"))
   end
+ it { should have_and_belong_to_many(:bands) }
 end

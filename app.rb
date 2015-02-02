@@ -38,6 +38,7 @@ end
 get("/venues/:id") do
 	@band_name = Band.find(params.fetch("id").to_i())
 	@band_name1 = Band.find(params.fetch("id").to_i())
+	@venue_array = []
 	@venues = Venue.all()
 	erb(:venues)
 end
@@ -54,14 +55,11 @@ end
 
 patch("/venues/:id") do
 	@band_name = Band.find(params.fetch("id").to_i())
-	@band_name1 = Band.find(params.fetch("id").to_i())
 	venue_ids = params.fetch("venue_ids")
-	@band_name1 = Band.create({:name => nil})
-	venue_ids.each() do |venue_id|
-		@band_name1.venues << Venue.find(venue_id.to_i())
-		@band_name.update({:venue_ids => [venue_id.to_i()]})
-	end
 	@venues = Venue.all()
+	venue_ids.each() do |venue_id|
+		@band_name.venues << Venue.find(venue_id.to_i())
+	end
 	erb(:venues)
 end
 
